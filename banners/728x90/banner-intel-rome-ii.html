@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CreateJS export from banner-intel-rome-ii</title>
+
+<script src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.4.0.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.6.0.min.js"></script>
+<script src="http://code.createjs.com/preloadjs-0.3.0.min.js"></script>
+<script src="./banner-intel-rome-ii.js"></script>
+
+<script>
+var canvas, stage, exportRoot;
+
+function init() {
+	canvas = document.getElementById("canvas");
+	images = images||{};
+
+	var manifest = [
+		{src:"images/background.png", id:"background"},
+		{src:"images/blackspotframe1.png", id:"blackspotframe1"},
+		{src:"images/blackspotframe2.png", id:"blackspotframe2"},
+		{src:"images/blackspotframe3.png", id:"blackspotframe3"},
+		{src:"images/blackspotframe4.png", id:"blackspotframe4"},
+		{src:"images/frame1buy.png", id:"frame1buy"},
+		{src:"images/frame1selectintelproducts.png", id:"frame1selectintelproducts"},
+		{src:"images/frame250value.png", id:"frame250value"},
+		{src:"images/frame2free.png", id:"frame2free"},
+		{src:"images/frame2get.png", id:"frame2get"},
+		{src:"images/frame2romeii.png", id:"frame2romeii"},
+		{src:"images/frame32014.png", id:"frame32014"},
+		{src:"images/frame3black.png", id:"frame3black"},
+		{src:"images/frame3gamecase.png", id:"frame3gamecase"},
+		{src:"images/frame3text1.png", id:"frame3text1"},
+		{src:"images/frame3text2.png", id:"frame3text2"},
+		{src:"images/frame4power.png", id:"frame4power"},
+		{src:"images/frame4the.png", id:"frame4the"},
+		{src:"images/frame4unlock.png", id:"frame4unlock"},
+		{src:"images/frame5black.png", id:"frame5black"},
+		{src:"images/frame5border.png", id:"frame5border"},
+		{src:"images/frame5clickforoffer.png", id:"frame5clickforoffer"},
+		{src:"images/frame5intellogo.png", id:"frame5intellogo"}
+	];
+
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest(manifest);
+}
+
+function handleFileLoad(evt) {
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
+}
+
+function handleComplete() {
+	exportRoot = new lib.bannerintelromeii();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	createjs.Ticker.setFPS(24);
+	createjs.Ticker.addEventListener("tick", stage);
+}
+</script>
+
+<style type="text/css">
+	body {
+		border: 0;
+		margin: 0;
+	}
+</style>
+
+</head>
+
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="728" height="90" style="background-color:#000000"></canvas>
+</body>
+</html>

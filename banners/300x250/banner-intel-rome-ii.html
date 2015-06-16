@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CreateJS export from banner-intel-rome-ii</title>
+
+<script src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.4.0.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.6.0.min.js"></script>
+<script src="http://code.createjs.com/preloadjs-0.3.0.min.js"></script>
+<script src="./banner-intel-rome-ii.js"></script>
+
+<script>
+var canvas, stage, exportRoot;
+
+function init() {
+	canvas = document.getElementById("canvas");
+	images = images||{};
+
+	var manifest = [
+		{src:"images/background.jpg", id:"background"},
+		{src:"images/bloodsplatterf1.png", id:"bloodsplatterf1"},
+		{src:"images/bloodsplatterf2.png", id:"bloodsplatterf2"},
+		{src:"images/bloodsplatterf3.png", id:"bloodsplatterf3"},
+		{src:"images/bloodsplatterf4.png", id:"bloodsplatterf4"},
+		{src:"images/f1buy.png", id:"f1buy"},
+		{src:"images/f1selectintelproducts.png", id:"f1selectintelproducts"},
+		{src:"images/f250usdvalue.png", id:"f250usdvalue"},
+		{src:"images/f2free.png", id:"f2free"},
+		{src:"images/f2get.png", id:"f2get"},
+		{src:"images/f2romeii.png", id:"f2romeii"},
+		{src:"images/f3power.png", id:"f3power"},
+		{src:"images/f3the.png", id:"f3the"},
+		{src:"images/f3unlock.png", id:"f3unlock"},
+		{src:"images/f4blackpatch1.png", id:"f4blackpatch1"},
+		{src:"images/f4blackpatch2.png", id:"f4blackpatch2"},
+		{src:"images/f4click.png", id:"f4click"},
+		{src:"images/f4for.png", id:"f4for"},
+		{src:"images/f4intellogo.png", id:"f4intellogo"},
+		{src:"images/f4offer.png", id:"f4offer"},
+		{src:"images/f4peel.png", id:"f4peel"}
+	];
+
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest(manifest);
+}
+
+function handleFileLoad(evt) {
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
+}
+
+function handleComplete() {
+	exportRoot = new lib.bannerintelromeii();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	createjs.Ticker.setFPS(24);
+	createjs.Ticker.addEventListener("tick", stage);
+}
+</script>
+
+<style type="text/css">
+	body {
+		border: 0;
+		margin: 0;
+	}
+</style>
+
+</head>
+
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="300" height="250" style="background-color:#ffffff"></canvas>
+</body>
+</html>
