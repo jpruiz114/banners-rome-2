@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains HTML5 animated banner advertisements for a Total War: Rome II and Intel promotional campaign, featuring three standard banner sizes with CreateJS-powered animations and Flash fallback support.
+This repository contains HTML5 animated banners for a Total War: Rome II and Intel campaign, featuring three standard sizes with CreateJS animations and Flash fallback.
 
 ## Banner Specifications
 
@@ -81,3 +81,4 @@ All brand names, trademarks, and copyrighted materials remain the exclusive prop
 ## General Disclaimer
 
 The content, information, and materials contained in this repository are provided on an "as is" basis. No representations or warranties are made regarding the accuracy, completeness, or suitability of the information contained herein. The author disclaims all liability for any errors, omissions, or damages arising from the use of this material. This repository is intended for educational, portfolio, and reference purposes only.
+
